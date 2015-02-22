@@ -25,6 +25,14 @@ HashMap instances __store key/value pairs__ allowing __keys of any type__.
 
 Unlike regular objects, __keys will not be stringified__. For example numbers and strings won't be mixed, you can pass `Date`'s, `RegExp`'s, DOM Elements, anything! (even `null` and `undefined`)
 
+## Key hashing
+
+Values are stored based on the hash of the value only (two different arrays, for example, that hash to the same value are considered the same key). 
+
+The following hash to their string representation: `undefined`, `null`, `true`, `false`, and any `Number` or `RegExp`. 
+
+`Date`s hash to ":" + thier string representation. `String`s hash to '"' + the string. Arrays hash to '[' + each element hashed and joined by "|". Objects are given a uid on the keky `_hmuid_`, and "{" + the string representation of that uid is used as the hash.
+
 ## HashMap constructor overloads
 - `new HashMap()` creates an empty hashmap
 - `new HashMap(map:HashMap)` creates a hashmap with the key-value pairs of `map`
